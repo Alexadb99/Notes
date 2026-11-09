@@ -12,6 +12,8 @@ Saved in the GitHub project Alexadb99/notes.
   (deep-research + dataviz). Waiting on the user.
 
 ## Log (newest first)
+- 2026-11-09: Weekly workout plan now explains every exercise: What it does, How to do it
+  (steps + common mistake), Equipment (+ backup if the gym lacks it). Week's gear list at the top.
 - 2026-11-09: Updated the "Weekly lineman workout plan" scheduled task (Mondays 5:35 AM ET):
   top priority is now the first 3 steps after the snap, dropping pad level fast (high after
   dead-ball snap) and rolling the hips through the block for pancakes. Weekly snap-and-step drill.
