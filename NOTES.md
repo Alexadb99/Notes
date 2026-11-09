@@ -3,13 +3,17 @@
 Saved in the GitHub project Alexadb99/notes.
 
 ## In progress
-- Nothing.
+- Silverback workout app (gorilla, underground gym look). Code in silverback/index.html,
+  its own detailed notes in silverback/NOTES.md. Live page:
+  https://claude.ai/artifact/Q5jPctWjA6NojR6GXeRgKU
 
 ## Next
 - Optional: redo this week's market data as a full report with a chart
   (deep-research + dataviz). Waiting on the user.
 
 ## Log (newest first)
+- 2026-11-09: Saved the Silverback app (silverback/index.html + silverback/NOTES.md)
+  into this project so it carries over between sessions.
 - 2026-11-09: Created GitHub project Alexadb99/notes (private) and saved
   NOTES.md there, so notes now carry over between sessions.
 - 2026-11-09: GitHub now works, linked as Alexadb99. No projects visible to
