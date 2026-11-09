@@ -12,6 +12,9 @@ Saved in the GitHub project Alexadb99/notes.
   (deep-research + dataviz). Waiting on the user.
 
 ## Log (newest first)
+- 2026-11-09: Started two faceless TikTok pages (Lineman tips, Teen future tips). Made animated
+  videos from code (tiktok/): lineman-01 first 3 steps, teen-01 first paycheck. No voice yet.
+  Next ideas: lineman-02 "why centers come out high", teen-02 "what a credit score is".
 - 2026-11-09: Weekly workout plan now speed-strength first: light-moderate weight moved fast,
   low reps / more sets, contrast pairs 2x/week, one heavier strength day, explosive work first.
   Equipment limited to a normal commercial gym (no sled, bands, platform; DB/KB power moves).
