@@ -12,6 +12,9 @@ Saved in the GitHub project Alexadb99/notes.
   (deep-research + dataviz). Waiting on the user.
 
 ## Log (newest first)
+- 2026-11-09: Weekly workout plan now speed-strength first: light-moderate weight moved fast,
+  low reps / more sets, contrast pairs 2x/week, one heavier strength day, explosive work first.
+  Equipment limited to a normal commercial gym (no sled, bands, platform; DB/KB power moves).
 - 2026-11-09: Weekly workout plan now explains every exercise: What it does, How to do it
   (steps + common mistake), Equipment (+ backup if the gym lacks it). Week's gear list at the top.
 - 2026-11-09: Updated the "Weekly lineman workout plan" scheduled task (Mondays 5:35 AM ET):
