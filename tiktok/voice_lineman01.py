@@ -1,6 +1,6 @@
 # Builds lineman video 1 with AI voice: voice per scene -> timings -> frames -> mp4
 import json,subprocess,wave,os
-D='/tmp/claude-0/-home-user-notes/6c5e74a7-35ec-52ad-b6bc-a2b34f566418/scratchpad/'
+D='./'  # run inside a folder that has voices/ (Piper voice) and aud/
 V=D+'voices/en_US-ryan-high.onnx'
 SCENES=[
  ('hook',"You lose the block in the first three steps. Not at contact. In the first three steps."),
