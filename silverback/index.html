@@ -328,27 +328,38 @@ button{cursor:pointer}
 
 .mapcount{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .mapcount b{font-family:var(--f-dirt);font-size:2rem;color:var(--hazard);font-weight:400}
-.mapready{display:inline-block;margin:10px 0 0;padding:4px 10px;background:var(--hazard);color:var(--soot);font-family:var(--f-sten);font-size:.95rem}
-.map{position:relative;margin:14px -6px 0;overflow:hidden;border:3px solid #0a0a08;box-shadow:0 0 0 1px #3d3a2a}
-.map>canvas{position:absolute;inset:0;width:100%;height:100%}
-.lm{position:absolute;z-index:1;width:min(46%,178px);transform:translateX(-50%);display:grid;justify-items:center;gap:5px;text-align:center}
-.lmwrap{position:relative;width:104px;height:104px;border-radius:50%}
-.coin{display:block;width:104px;height:104px}
-.lm-fresh .lmwrap{box-shadow:0 0 0 3px var(--hazard);animation:ringPulse 1.2s steps(2) infinite}
-@keyframes ringPulse{50%{box-shadow:0 0 0 6px var(--hazard)}}
-.lm-claimed .coin{animation:coinflip 1s cubic-bezier(.3,.7,.4,1) both}
-@keyframes coinflip{0%{transform:perspective(500px) rotateY(0)}55%{transform:perspective(500px) rotateY(540deg) scale(1.16)}100%{transform:perspective(500px) rotateY(720deg) scale(1)}}
-.lm-claimed .lmwrap::after{content:"";position:absolute;inset:3px;border-radius:50%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.5) 48%,transparent 58%);background-size:260% 100%;background-position:130% 0;animation:glint .8s ease-out 1s both;pointer-events:none}
-@keyframes glint{to{background-position:-70% 0}}
-.lmname{font-family:var(--f-dirt);font-weight:400;font-size:1rem;line-height:1.05;letter-spacing:.02em;color:var(--bone);background:#0b0c08;padding:3px 7px;border:1px solid #3d3a2a}
-.lmname small{font-family:var(--f-stamp);font-size:.68rem;letter-spacing:.08em;color:var(--ash);margin-right:5px}
-.lm-locked .lmname{color:var(--dim)}
-.lmhint{font-family:var(--f-stamp);font-size:.76rem;line-height:1.3;color:var(--ash);background:rgba(8,9,6,.88);padding:3px 6px}
-.lm-done .lmhint{color:var(--bone)}
-.claimbtn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:0;border-radius:999px;background:var(--hazard);color:var(--soot);font-family:var(--f-sten);font-size:.85rem;letter-spacing:.03em;white-space:nowrap;box-shadow:0 2px 0 rgba(0,0,0,.55);transition:transform .15s}
-.claimbtn:active{transform:scale(.95)}
 .newlm{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;padding:14px 10px;background:#1d2116;border:2px solid #0a0a08}
-.newlm .lm{position:static;transform:none;width:130px}
+.coin{display:block}
+.nextup{display:grid;gap:6px;margin-top:14px;padding:12px;background:rgba(0,0,0,.3);border-left:4px solid var(--hazard)}
+.nextup b{font-family:var(--f-sten);font-size:1.05rem}
+.cbar{position:relative;height:8px;background:rgba(0,0,0,.45);border:1px solid var(--seam)}
+.cbar i{position:absolute;inset:0 auto 0 0;background:var(--hazard)}
+.nextup small,.cleft,.nextc small{font-family:var(--f-stamp);font-size:.8rem;color:var(--ash)}
+.track{display:grid;gap:10px}
+.trhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.trhead h3{margin:0;font-family:var(--f-dirt);font-weight:400;font-size:1.4rem;line-height:1}
+.trhead span{font-family:var(--f-stamp);font-size:.8rem;color:var(--hazard)}
+.corow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;justify-items:center}
+.cslot{position:relative;display:grid;justify-items:center;gap:3px}
+.cslot small{font-family:var(--f-sten);font-size:.75rem;color:var(--ash)}
+.cslot.isnew::after{content:"NEW";position:absolute;top:-6px;right:-6px;padding:1px 4px;background:var(--hazard);color:var(--soot);font-family:var(--f-sten);font-size:.6rem}
+.cslot.isnew .coin{animation:coinflip 1s cubic-bezier(.3,.7,.4,1) both .3s}
+@keyframes coinflip{0%{transform:perspective(400px) rotateY(0)}100%{transform:perspective(400px) rotateY(720deg)}}
+.nextlist{display:grid;gap:12px;margin-top:12px}
+.nextc{display:grid;grid-template-columns:58px minmax(0,1fr);gap:12px;align-items:center}
+.nextc>div{display:grid;gap:5px}
+.nextc b{font-family:var(--f-sten);font-size:1rem}
+.cwon{display:grid;justify-items:center;gap:4px;text-align:center;width:130px}
+.cwon b{font-family:var(--f-sten);font-size:.9rem}
+.cwon small{font-family:var(--f-stamp);font-size:.72rem;color:var(--ash)}
+.cwon .coin{animation:coinflip 1.1s cubic-bezier(.3,.7,.4,1) both .5s}
+.coinflash{z-index:89;background:rgba(7,8,6,.95)}
+.cfwrap{display:grid;justify-items:center;gap:8px;text-align:center}
+.cfkick{margin:0;font-family:var(--f-sten);font-size:1.1rem;letter-spacing:.3em;color:var(--bone)}
+.cfwrap .coin{animation:coinIn .9s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes coinIn{0%{transform:perspective(500px) rotateY(-540deg) scale(.3);opacity:0}100%{transform:none;opacity:1}}
+.cfname{font-family:var(--f-dirt);font-weight:400;font-size:1.6rem;color:var(--hazard);text-shadow:3px 3px 0 #000}
+.cfsub{font-family:var(--f-stamp);font-size:.9rem;color:var(--bone)}
 .race{display:grid;gap:9px}
 .rtop{display:flex;justify-content:space-between;align-items:baseline;gap:4px 10px;flex-wrap:wrap}
 .rstat{font-family:var(--f-sten);font-weight:400;font-size:1rem;color:var(--bone)}
@@ -520,7 +531,7 @@ select.tin{font-size:1.2rem;font-family:var(--f-body);font-weight:700}
   </header>
   <section id="view-den" aria-label="Camp"></section>
   <section id="view-hunt" aria-label="Train" hidden></section>
-  <section id="view-wall" aria-label="The map" hidden></section>
+  <section id="view-wall" aria-label="Coin case" hidden></section>
   <section id="view-tools" aria-label="Tools" hidden></section>
   <section id="view-you" aria-label="You and settings" hidden></section>
 </main>
@@ -528,7 +539,7 @@ select.tin{font-size:1.2rem;font-family:var(--f-body);font-weight:700}
 <nav class="tabs" aria-label="Main">
   <button class="tab" data-go="den"><svg viewBox="0 0 24 24"><path d="M2 20 12 4l10 16M8 20l4-7 4 7"/></svg>CAMP</button>
   <button class="tab" data-go="hunt"><svg viewBox="0 0 24 24"><path d="M2 12h20M5 8v8M8 6v12M16 6v12M19 8v8"/></svg>TRAIN<span class="live" id="liveDot" hidden></span></button>
-  <button class="tab" data-go="wall"><svg viewBox="0 0 24 24"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2zM9 4v14M15 6v14"/></svg>MAP<span class="live" id="wallDot" hidden></span></button>
+  <button class="tab" data-go="wall"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.5"/><path d="M12 9.5v5"/></svg>COINS<span class="live" id="wallDot" hidden></span></button>
   <button class="tab" data-go="tools"><svg viewBox="0 0 24 24"><circle cx="12" cy="14" r="7"/><path d="M12 14v-4M10 3h4M18 7l1.5-1.5"/></svg>TOOLS</button>
   <button class="tab" data-go="you"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>YOU</button>
 </nav>
@@ -544,6 +555,7 @@ select.tin{font-size:1.2rem;font-family:var(--f-body);font-weight:700}
 <div class="overlay" id="onboard" hidden role="dialog" aria-modal="true" aria-labelledby="obTitle"><div class="fin poster" id="obBody"></div></div>
 <div class="overlay" id="ladder" hidden role="dialog" aria-modal="true" aria-labelledby="ladTitle"><div class="fin poster" id="ladBody"></div></div>
 <div class="overlay rankov" id="rankov" hidden role="dialog" aria-modal="true" aria-labelledby="rkTitle"><div class="rkwrap" id="rkBody"></div></div>
+<div class="prflash coinflash" id="coinflash" hidden><div class="cfwrap" id="cfBody"></div></div>
 <div class="overlay" id="finish" hidden role="dialog" aria-modal="true" aria-labelledby="finTitle"><div class="fin poster" id="finBody"></div></div>
 
 <script>
@@ -574,22 +586,8 @@ const TEMPLATES={
   recover:{name:'RECOVER',sub:'Easy cardio · stretching · loosen up. Changes every time',c:'var(--leaf)',rec:true,ex:[['Easy walk · 20 min',1,1,0],['Hip + shoulder mobility · 10 min',1,1,0],['Foam roll · 10 min',1,1,0]]}
 };
 const ROT=['push','pull','legs'];
-const TAGS=[
-  {id:'show',name:'BASE CAMP',icon:'camp',hint:'Finish your first session',test:c=>c.sessions>=1},
-  {id:'howl',name:'THUNDER ROCK',icon:'thunder',hint:'Hit your first PR',test:c=>c.prCount>=1},
-  {id:'rest',name:'STILL LAGOON',icon:'lagoon',hint:'Log a recovery day',test:c=>c.recovers>=1},
-  {id:'ember',name:'EMBER PIT',icon:'ember',hint:'Beat your weekly target to earn an ember',test:c=>c.embersEarned>=1},
-  {id:'dawn',name:'SUNRISE RIDGE',icon:'sunrise',hint:'Finish a session before 7 AM',test:c=>c.dawn},
-  {id:'night',name:'MOON CAVE',icon:'moon',hint:'Finish a session after 9 PM',test:c=>c.night},
-  {id:'ghost',name:'GHOST SWAMP',icon:'swamp',hint:"Beat last time's you in the same session",test:c=>c.ghostWins>=1},
-  {id:'run3',name:'LONG RIVER',icon:'river',hint:'Hold a weekly streak for 3 weeks',test:c=>c.bestStreak>=3},
-  {id:'10k',name:'BOULDER FIELD',icon:'boulder',hint:'Move 10,000 lb in one session',test:c=>c.maxVol>=10000},
-  {id:'200',name:'VINE BRIDGE',icon:'bridge',hint:'Log 200 sets total',test:c=>c.sets>=200},
-  {id:'lead',name:'TROOP GROUNDS',icon:'troop',hint:'Finish 25 sessions',test:c=>c.sessions>=25},
-  {id:'alpha',name:'SILVERBACK SUMMIT',icon:'summit',hint:'Reach Silverback rank',test:c=>c.xp>=3000}
-];
-const SLOGAN='Life’s my jungle. I conquer it.';
-const QUOTES=[SLOGAN,'Strong enough to stay calm.','The jungle doesn’t care how you feel. Show up anyway.','You vs. last week. That’s the whole fight.','Quiet work. Loud results.','Rest is part of the program.','Slow reps still count.','Nobody built strength in one day. Stack them.','Bad day? Lighter weight. Still show up.','Chalk up. Lock in. Go.'];
+const SLOGAN='Nobody’s coming. Get to work.';
+const QUOTES=[SLOGAN,'Strong enough to stay calm.','The bar doesn’t care how you feel. Show up anyway.','You vs. last week. That’s the whole fight.','Quiet work. Loud results.','Rest is part of the program.','Slow reps still count.','Nobody built strength in one day. Stack them.','Bad day? Lighter weight. Still show up.','Chalk up. Lock in. Go.'];
 const HYPE_SET=['CLEAN REP.','THAT’S ONE IN THE BANK.','BREATHE. RESET. GO.','STRONG. AGAIN.','KEEP THE PACE.','CALM. HEAVY. DONE.'];
 const HYPE_EX=['EXERCISE HANDLED. NEXT.','THAT ONE’S DONE. KEEP MOVING.','LOCKED IN. NEXT LIFT.'];
 const FIN_TITLES=['CONQUERED.','TERRITORY TAKEN.','BUILT, NOT BOUGHT.','YOU SHOWED UP.','THAT WAS WORK.'];
@@ -698,7 +696,7 @@ function seed(){
   let d=addDays(now,-1);
   if(d<ws) d=new Date(now.getTime()-2*36e5); else d.setHours(17,40,0,0);
   if(d>=ws) sessions.push(mk('push',d,20,99));
-  return {v:1,name:'',target:3,sessions,active:null,ready:null,seen:null,prs:{},onboarded:false};
+  return {v:1,name:'',target:3,sessions,active:null,ready:null,prs:{},onboarded:false};
 }
 function load(){try{const j=JSON.parse(localStorage.getItem(KEY));if(j&&Array.isArray(j.sessions))return j;}catch(e){}return null;}
 let S=load()||seed();
@@ -709,13 +707,13 @@ const setsOf=s=>s.ex.reduce((a,e)=>a+e.s.filter(st=>st.d!==false).length,0);
 
 function crunch(list,target){
   const sorted=[...list].sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0);
-  const best={},lastByType={},lastEx={},prevVol={},perWeek={},prEvents=[];
+  const best={},lastByType={},lastEx={},prevVol={},perWeek={},prEvents=[],maxW={};let totalVol=0;
   let xp=0,sets=0,prCount=0,maxVol=0,ghostWins=0,recovers=0,dawn=false,night=false,lastType=null;
-  for(const [n,p] of Object.entries(S.prs||{}))if(p&&p.w>0)best[n]={v:e1(p.w,p.r||1),w:p.w,r:p.r||1,date:p.date};
+  for(const [n,p] of Object.entries(S.prs||{}))if(p&&p.w>0){best[n]={v:e1(p.w,p.r||1),w:p.w,r:p.r||1,date:p.date};maxW[n]=Math.max(maxW[n]||0,p.w);}
   for(const s of sorted){
     xp+=50;const d=new Date(s.date);let vol=0;
     for(const e of s.ex){
-      for(const st of e.s){sets++;xp+=10;vol+=st.w*st.r;
+      for(const st of e.s){sets++;xp+=10;vol+=st.w*st.r;if(st.w>0&&st.r>0)maxW[e.n]=Math.max(maxW[e.n]||0,st.w);
         if(st.w>0){const v=e1(st.w,st.r),b=best[e.n];
           if(b&&v>b.v+0.01){prCount++;xp+=100;prEvents.push({sid:s.id,n:e.n,w:st.w,r:st.r,date:s.date});}
           if(!b||v>b.v)best[e.n]={v,w:st.w,r:st.r,date:s.date};}
@@ -725,7 +723,7 @@ function crunch(list,target){
     const pts=s.ex.reduce((a,e)=>a+e.s.reduce((b,q)=>b+setPts(q),0),0);
     if(TEMPLATES[s.t]&&TEMPLATES[s.t].rec)recovers++;
     else{if(prevVol[s.t]!=null&&pts>prevVol[s.t])ghostWins++;prevVol[s.t]=pts;lastType=s.t;}
-    maxVol=Math.max(maxVol,vol);
+    maxVol=Math.max(maxVol,vol);totalVol+=vol;
     const h=d.getHours();if(h<7)dawn=true;if(h>=21)night=true;
     lastByType[s.t]=s;
     const k=wkey(d);perWeek[k]=(perWeek[k]||0)+1;
@@ -746,12 +744,12 @@ function crunch(list,target){
   const cur=perWeek[cw]||0;let live=streak;
   if(cur>=target){live++;weeksHit++;xp+=75;if(cur>target&&embers<3){embers++;embersEarned++;}}
   bestStreak=Math.max(bestStreak,live);
+  xp+=coinXP();
   const ws=weekStart(now),days=new Set();
   for(const s of sorted){const d=new Date(s.date);if(d>=ws)days.add((d.getDay()+6)%7);}
-  return {sorted,sessions:sorted.length,sets,xp,prCount,prEvents,best,lastByType,lastEx,maxVol,ghostWins,recovers,dawn,night,streak,live,bestStreak,embers,embersEarned,weeksHit,cur,days,lastType};
+  return {maxW,totalVol,sorted,sessions:sorted.length,sets,xp,prCount,prEvents,best,lastByType,lastEx,maxVol,ghostWins,recovers,dawn,night,streak,live,bestStreak,embers,embersEarned,weeksHit,cur,days,lastType};
 }
 const C=()=>crunch(S.sessions,S.target);
-const unlocked=c=>TAGS.filter(t=>t.test(c)).map(t=>t.id);
 function nextType(c){const lt=c.lastType;if(!lt||lt==='full')return 'push';return ROT[(ROT.indexOf(lt)+1)%3];}
 const KG=0.45359237,isKg=()=>S.set.units==='kg',toU=lb=>isKg()?lb*KG:lb,fromU=v=>isKg()?v/KG:v,UL=()=>isKg()?'KG':'LB';
 const fmtW=lb=>(Math.round(toU(lb)*2)/2).toLocaleString('en-US',{maximumFractionDigits:1});
@@ -773,63 +771,86 @@ const FLAME=`<defs><linearGradient id="fg" x1="0" y1="1" x2="0" y2="0"><stop off
 const EMBER='<svg class="ember" viewBox="0 0 18 24" aria-hidden="true"><path d="M9 1C11 7 16 9 15 15C14.5 20 12 23 9 23C5 23 3 20 3 16C3 12 6 10 6 6C8 9 8 11 10 12C11 8 10 4 9 1Z"/></svg>';
 const CHECK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>';
 const GHOST='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C7 2 4 6 4 11v11l3-2 2.5 2L12 20l2.5 2L17 20l3 2V11c0-5-3-9-8-9Zm-3 8a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/></svg>';
-/* ---------------- challenge coins: each achievement is an engraved metal coin ---------------- */
+/* ---------------- coins: tiered milestones you earn by getting stronger ---------------- */
 const METALS={bronze:['#e2ad7f','#a86c3f','#4a2810'],gunmetal:['#b8bec2','#5f6569','#1d2023'],silver:['#f2f4f6','#aab0b6','#41464b'],brass:['#f4d896','#b58b40','#4c3610'],gold:['#ffe9a6','#d6a53c','#573a06'],iron:['#56594f','#2e302b','#111210']};
-const COIN_METAL={show:'bronze',howl:'gunmetal',rest:'silver',ember:'bronze',dawn:'brass',night:'gunmetal',ghost:'silver',run3:'brass','10k':'gunmetal','200':'silver',lead:'brass',alpha:'gold'};
-const ell=(cx,cy,rx,ry)=>`M${cx-rx} ${cy} a${rx} ${ry} 0 1 0 ${2*rx} 0 a${rx} ${ry} 0 1 0 ${-2*rx} 0Z`;
-// emblems in a 100x100 box: filled shapes, or strokes when sw is set
-const EMBLEM={
- camp:[{d:'M50 14 L88 82 L12 82Z M50 42 L41 82 L59 82Z',r:'evenodd'},{d:'M6 85 H94 V91 H6Z'}],
- thunder:[{d:'M58 4 L32 44 L48 44 L38 70 L70 32 L54 32 L66 4Z'},{d:'M6 94 L18 76 L32 70 L44 78 L56 72 L74 76 L94 94Z'}],
- lagoon:[{d:'M10 50 Q20 42 30 50 T50 50 T70 50 T90 50 M10 66 Q20 58 30 66 T50 66 T70 66 T90 66 M18 82 Q28 74 38 82 T58 82 T78 82',sw:6},{d:'M70 42 L72 12 L76 12 L77 42Z M60 42 L60 22 L64 22 L66 42Z M71 6 h6 v16 h-6Z M59 16 h6 v14 h-6Z'}],
- ember:[{d:'M50 6 C60 24 76 34 72 56 C69 72 60 82 50 82 C36 82 26 72 26 58 C26 44 38 38 38 22 C44 32 44 40 50 44 C54 32 52 18 50 6Z M50 50 C55 58 60 64 58 71 C57 77 54 79 50 79 C45 79 42 76 42 71 C42 64 48 60 50 50Z',r:'evenodd'},{d:'M14 92 L86 82 L87 88 L15 98Z'}],
- sunrise:[{d:'M24 60 A26 26 0 0 1 76 60Z'},{d:'M50 24 V10 M27 33 L19 25 M73 33 L81 25 M17 52 H5 M83 52 H95',sw:5},{d:'M4 94 L32 56 L46 70 L62 46 L96 94Z'}],
- moon:[{d:'M60 8 A22 22 0 1 0 88 38 A16 16 0 1 1 60 8Z'},{d:'M6 94 Q12 52 50 46 Q88 52 94 94Z M34 94 Q34 70 50 66 Q66 70 66 94Z',r:'evenodd'}],
- swamp:[{d:'M30 82 L34 24 M44 82 L46 34 M58 82 L56 28 M70 82 L66 40',sw:4},{d:'M30 12 h8 v20 h-8Z M42 24 h7 v16 h-7Z M52 16 h8 v18 h-8Z M62 30 h7 v15 h-7Z'},{d:'M8 86 H92 M20 94 H80',sw:4}],
- river:[{d:'M14 10 C70 20 70 40 46 52 C22 64 30 86 86 92',sw:14}],
- boulder:[{d:'M8 92 L14 70 L32 60 L46 68 L50 92Z'},{d:'M48 92 L52 66 L70 56 L88 64 L92 92Z'},{d:'M28 60 L34 36 L52 26 L70 36 L72 52 L54 62 L30 60Z'}],
- bridge:[{d:'M12 36 V84 M88 36 V84',sw:6},{d:'M12 38 Q50 80 88 38',sw:4},{d:'M4 86 H96',sw:6},{d:'M27 53 V84 M39 61 V84 M50 64 V84 M61 61 V84 M73 53 V84',sw:2.6}],
- troop:[{d:'M24 48 Q50 38 76 48 L78 82 Q50 94 22 82Z'},{d:ell(30,32,8,9)+ell(44,24,8,9)+ell(58,24,8,9)+ell(72,32,8,9)},{d:ell(15,62,7,10)}],
- summit:[{d:'M4 94 L36 42 L48 56 L62 28 L96 94Z M62 28 L72 48 L64 44 L58 52 L54 44Z',r:'evenodd'},{d:'M46 20 L46 6 L53 13 L60 2 L67 13 L74 6 L74 20Z'}]
-};
+const TIER_METAL=['bronze','gunmetal','silver','brass','gold'],TIER_NAME=['BRONZE','GUNMETAL','SILVER','BRASS','GOLD'],TIER_XP=[50,100,150,250,400];
+// plate clubs use the heaviest weight actually lifted (any reps); thresholds are real gym numbers in each unit
+const TRACKS=[
+ {id:'bench',name:'BENCH PRESS',kind:'lift',lift:'Bench Press',lb:[135,185,225,275,315],kg:[60,80,100,120,140],desc:'Heaviest bench press you’ve lifted, any reps.'},
+ {id:'squat',name:'BACK SQUAT',kind:'lift',lift:'Back Squat',lb:[135,225,315,405,495],kg:[60,100,140,180,220],desc:'Heaviest back squat you’ve lifted, any reps.'},
+ {id:'dead',name:'DEADLIFT',kind:'lift',lift:'Deadlift',lb:[225,315,405,495,585],kg:[100,140,180,220,260],desc:'Heaviest deadlift you’ve lifted, any reps.'},
+ {id:'ohp',name:'OVERHEAD PRESS',kind:'lift',lift:'Overhead Press',lb:[95,135,155,185,225],kg:[40,60,70,80,100],desc:'Heaviest overhead press you’ve lifted, any reps.'},
+ {id:'sess',name:'SESSIONS',kind:'count',unit:'SESSIONS',t:[10,25,50,100,250],v:c=>c.sessions,desc:'Workouts finished. Recovery days count.'},
+ {id:'streak',name:'WEEK STREAK',kind:'count',unit:'WEEKS',t:[4,8,12,26,52],v:c=>c.bestStreak,desc:'Longest run of weeks hitting your target.'},
+ {id:'prs',name:'PRS BROKEN',kind:'count',unit:'PRS',t:[5,15,40,100,250],v:c=>c.prCount,desc:'Times you beat your best on any lift.'},
+ {id:'ghost',name:'GHOST HUNTER',kind:'count',unit:'WINS',t:[1,5,15,40,100],v:c=>c.ghostWins,desc:'Sessions where you beat last time’s you.'},
+ {id:'rest',name:'RECOVERY',kind:'count',unit:'REST DAYS',t:[3,10,25,50,100],v:c=>c.recovers,desc:'Recovery days logged. Rest is part of the program.'},
+ {id:'vol',name:'TOTAL LIFTED',kind:'vol',lb:[50e3,250e3,1e6,2.5e6,5e6],kg:[25e3,100e3,500e3,1e6,2.5e6],desc:'Every set’s weight × reps, added up forever.'}
+];
+const short=n=>n>=1e6?(n/1e6).toFixed(n%1e6?1:0).replace('.0','')+'M':n>=1e3?Math.round(n/1e3)+'K':String(Math.round(n));
+// thresholds in the user's unit, plus each in lb for comparing with stored weights
+function tiers(tr){const kg=isKg();if(tr.kind==='count')return tr.t.map(x=>({u:x,lb:x}));const arr=kg?tr.kg:tr.lb;return arr.map(x=>({u:x,lb:kg?x/KG:x}));}
+function trackValue(tr,c){if(tr.kind==='count')return tr.v(c);if(tr.kind==='vol')return c.totalVol||0;return c.maxW[tr.lift]||0;}
+function coinOf(tr,i){const T=tiers(tr)[i],unit=tr.kind==='count'?tr.unit:(tr.kind==='vol'?UL()+' LIFTED':UL());
+  return {id:`${tr.id}-${i}`,tr,i,metal:TIER_METAL[i],top:tr.name,num:tr.kind==='count'?String(T.u):short(T.u),unit};}
+const ALLCOINS=()=>TRACKS.flatMap(tr=>tiers(tr).map((_,i)=>coinOf(tr,i)));
+const coinXP=()=>Object.keys(S.coins||{}).reduce((a,id)=>a+(TIER_XP[+id.split('-')[1]]||0),0);
+// record any coin the data now qualifies for; coins are never taken away
+function awardCoins(c,silent){S.coins=S.coins||{};const fresh=[];
+  for(const tr of TRACKS){const v=trackValue(tr,c);tiers(tr).forEach((T,i)=>{const id=`${tr.id}-${i}`;if(!S.coins[id]&&v>=T.lb-0.01){S.coins[id]={d:new Date().toISOString(),v:silent?1:0};fresh.push(coinOf(tr,i));}});}
+  if(fresh.length)save();return fresh;}
+function resyncCoins(){S.coins={};awardCoins(C(),true);}
+function nextCoins(c,n){const out=[];
+  for(const tr of TRACKS){const T=tiers(tr),i=T.findIndex((_,k)=>!(S.coins||{})[`${tr.id}-${k}`]);if(i<0)continue;
+    const v=trackValue(tr,c);if(tr.kind==='lift'&&!v)continue;const prev=i?T[i-1].lb:0,pct=Math.max(0,Math.min(.999,(v-prev)/(T[i].lb-prev)));
+    out.push({coin:coinOf(tr,i),v,goal:T[i].lb,pct,left:T[i].lb-v});}
+  return out.sort((a,b)=>b.pct-a.pct).slice(0,n);}
+const leftText=(tr,left)=>tr.kind==='count'?`${fmt(Math.ceil(left))} to go`:tr.kind==='vol'?`${short(toU(left))} ${UL()} to go`:`${fmtW(left)} ${UL()} to go`;
+const valText=(tr,v)=>tr.kind==='count'?fmt(v):tr.kind==='vol'?short(toU(v))+' '+UL():fmtW(v)+' '+UL();
 const strHash=s=>{let h=2166136261;for(const ch of s){h^=ch.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;};
 function arcText(g,str,cx,cy,r,mid,bottom){
   const ch=[...str],ws=ch.map(c=>g.measureText(c).width+.7),tot=ws.reduce((a,b)=>a+b,0)/r;let a=bottom?mid+tot/2:mid-tot/2;
   ch.forEach((c,i)=>{const da=ws[i]/r,ang=bottom?a-da/2:a+da/2;g.save();g.translate(cx,cy);g.rotate(ang);g.translate(r,0);g.rotate(bottom?-Math.PI/2:Math.PI/2);g.fillText(c,0,0);g.restore();a+=bottom?-da:da;});}
-const COINSZ=104;
-function drawCoin(cv,t,st){
-  const dpr=Math.min(3,window.devicePixelRatio||1),S=COINSZ;cv.width=S*dpr;cv.height=S*dpr;const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,S,S);
-  const lk=st==='locked',m=METALS[lk?'iron':(COIN_METAL[t.id]||'bronze')],cx=S/2,cy=S/2,R=S/2-3,R0=rng(strHash(t.id));
-  g.fillStyle='rgba(0,0,0,.6)';g.beginPath();g.arc(cx+2,cy+3,R,0,7);g.fill();
-  // reeded edge
+function drawCoin(cv,co,st,S){
+  const dpr=Math.min(3,window.devicePixelRatio||1);cv.width=S*dpr;cv.height=S*dpr;const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,S,S);
+  const lk=st==='locked',m=METALS[lk?'iron':co.metal],cx=S/2,cy=S/2,R=S/2-2,q=S/104,R0=rng(strHash(co.id)),big=S>=86;
+  g.fillStyle='rgba(0,0,0,.6)';g.beginPath();g.arc(cx+1.5*q,cy+2.5*q,R,0,7);g.fill();
   g.fillStyle=m[2];g.beginPath();g.arc(cx,cy,R,0,7);g.fill();
-  g.lineWidth=1;for(let i=0;i<150;i++){const a=i/150*6.283;g.strokeStyle=i%2?'rgba(255,255,255,.22)':'rgba(0,0,0,.4)';g.beginPath();g.moveTo(cx+Math.cos(a)*(R-4.5),cy+Math.sin(a)*(R-4.5));g.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);g.stroke();}
-  // raised rim and recessed field
-  const rim=g.createLinearGradient(cx-R,cy-R,cx+R,cy+R);rim.addColorStop(0,m[0]);rim.addColorStop(.5,m[1]);rim.addColorStop(1,m[2]);g.fillStyle=rim;g.beginPath();g.arc(cx,cy,R-4.5,0,7);g.fill();
-  const fr=R-10,fg=g.createRadialGradient(cx-fr*.35,cy-fr*.4,fr*.08,cx,cy,fr*1.05);fg.addColorStop(0,m[0]);fg.addColorStop(.6,m[1]);fg.addColorStop(1,m[2]);g.fillStyle=fg;g.beginPath();g.arc(cx,cy,fr,0,7);g.fill();
-  g.lineWidth=1.5;g.strokeStyle='rgba(0,0,0,.5)';g.beginPath();g.arc(cx,cy,fr,Math.PI*.75,Math.PI*1.75);g.stroke();g.strokeStyle='rgba(255,255,255,.32)';g.beginPath();g.arc(cx,cy,fr,Math.PI*1.75,Math.PI*2.75);g.stroke();
-  // bead ring
-  const br=fr-11;g.lineWidth=1.6;g.strokeStyle='rgba(0,0,0,.45)';g.beginPath();g.arc(cx+.5,cy+.6,br,0,7);g.stroke();g.lineWidth=1;g.strokeStyle='rgba(255,255,255,.35)';g.beginPath();g.arc(cx-.4,cy-.4,br,0,7);g.stroke();
-  // engraved lettering
-  g.font='800 7px "Rubik","Arial Black",sans-serif';g.textAlign='center';g.textBaseline='middle';
-  const tr=(fr+br)/2,top=lk?'CLASSIFIED':t.name,bot=lk?'• • •':'SILVERBACK TROOP';
-  for(const [dx,dy,col] of [[.5,.6,'rgba(255,255,255,.32)'],[0,0,lk?'rgba(0,0,0,.6)':'rgba(0,0,0,.62)']]){g.save();g.translate(dx,dy);g.fillStyle=col;arcText(g,top,cx,cy,tr,-Math.PI/2,false);arcText(g,bot,cx,cy,tr,Math.PI/2,true);g.restore();}
-  // embossed emblem
-  const k=(br*2-10)/100,ox=cx-50*k,oy=cy-50*k;
-  for(const p of EMBLEM[t.icon]||[]){const path=new Path2D(p.d);
-    const draw=(dx,dy,style)=>{g.save();g.translate(ox+dx,oy+dy);g.scale(k,k);if(p.sw){g.lineWidth=p.sw;g.lineCap='round';g.lineJoin='round';g.strokeStyle=style;g.stroke(path);}else{g.fillStyle=style;g.fill(path,p.r||'nonzero');}g.restore();};
-    draw(1.1,1.3,'rgba(0,0,0,.6)');draw(-.8,-.9,lk?'rgba(255,255,255,.12)':'rgba(255,255,255,.45)');
-    g.save();g.translate(ox,oy);g.scale(k,k);const rg=g.createLinearGradient(0,0,100,100);rg.addColorStop(0,lk?m[1]:m[0]);rg.addColorStop(1,m[1]);g.restore();draw(0,0,rg);}
-  // wear: scratches, grain, tarnish, and a glint on polished coins
-  g.save();g.beginPath();g.arc(cx,cy,R-4.5,0,7);g.clip();
-  g.lineWidth=.5;for(let i=0;i<12;i++){const x=cx+(R0()-.5)*R*1.6,y=cy+(R0()-.5)*R*1.6,l=4+R0()*14,a=R0()*Math.PI;g.strokeStyle=R0()<.6?'rgba(255,255,255,.16)':'rgba(0,0,0,.25)';g.beginPath();g.moveTo(x,y);g.lineTo(x+Math.cos(a)*l,y+Math.sin(a)*l);g.stroke();}
-  for(let i=0;i<500;i++){g.fillStyle=R0()<.5?'rgba(255,255,255,.07)':'rgba(0,0,0,.12)';g.fillRect(cx+(R0()-.5)*2*R,cy+(R0()-.5)*2*R,.8,.8);}
-  if(lk){g.fillStyle='rgba(8,10,6,.28)';g.fillRect(0,0,S,S);}
-  if(st==='done'){const gl=g.createLinearGradient(cx-R,cy-R,cx+R,cy+R);gl.addColorStop(.32,'rgba(255,255,255,0)');gl.addColorStop(.42,'rgba(255,255,255,.2)');gl.addColorStop(.47,'rgba(255,255,255,.04)');gl.addColorStop(.56,'rgba(255,255,255,0)');g.fillStyle=gl;g.fillRect(0,0,S,S);}
+  const rw=4.5*q;g.lineWidth=Math.max(.6,q);const nr=Math.round(150*q);for(let i=0;i<nr;i++){const a=i/nr*6.283;g.strokeStyle=i%2?'rgba(255,255,255,.22)':'rgba(0,0,0,.4)';g.beginPath();g.moveTo(cx+Math.cos(a)*(R-rw),cy+Math.sin(a)*(R-rw));g.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);g.stroke();}
+  const rim=g.createLinearGradient(cx-R,cy-R,cx+R,cy+R);rim.addColorStop(0,m[0]);rim.addColorStop(.5,m[1]);rim.addColorStop(1,m[2]);g.fillStyle=rim;g.beginPath();g.arc(cx,cy,R-rw,0,7);g.fill();
+  const fr=R-10*q,fg=g.createRadialGradient(cx-fr*.35,cy-fr*.4,fr*.08,cx,cy,fr*1.05);fg.addColorStop(0,m[0]);fg.addColorStop(.6,m[1]);fg.addColorStop(1,m[2]);g.fillStyle=fg;g.beginPath();g.arc(cx,cy,fr,0,7);g.fill();
+  g.lineWidth=1.5*q;g.strokeStyle='rgba(0,0,0,.5)';g.beginPath();g.arc(cx,cy,fr,Math.PI*.75,Math.PI*1.75);g.stroke();g.strokeStyle='rgba(255,255,255,.32)';g.beginPath();g.arc(cx,cy,fr,Math.PI*1.75,Math.PI*2.75);g.stroke();
+  const br=big?fr-11*q:fr-3*q;
+  if(big){g.lineWidth=1.6*q;g.strokeStyle='rgba(0,0,0,.45)';g.beginPath();g.arc(cx+.5,cy+.6,br,0,7);g.stroke();g.lineWidth=q;g.strokeStyle='rgba(255,255,255,.35)';g.beginPath();g.arc(cx-.4,cy-.4,br,0,7);g.stroke();
+    g.font=`800 ${7*q}px "Rubik","Arial Black",sans-serif`;g.textAlign='center';g.textBaseline='middle';const tr=(fr+br)/2;
+    for(const [dx,dy,col] of [[.5,.6,'rgba(255,255,255,.32)'],[0,0,'rgba(0,0,0,.62)']]){g.save();g.translate(dx,dy);g.fillStyle=col;arcText(g,co.top,cx,cy,tr,-Math.PI/2,false);arcText(g,'SILVERBACK TROOP',cx,cy,tr,Math.PI/2,true);g.restore();}}
+  // stamped number + unit
+  g.textAlign='center';g.textBaseline='middle';const ns=Math.min(br*(big?.95:.78),br*(big?2.2:1.8)/Math.max(2.4,co.num.length*.62));
+  const stamp=(txt,font,y)=>{g.font=font;g.fillStyle='rgba(0,0,0,.55)';g.fillText(txt,cx+q,y+1.2*q);g.fillStyle=lk?'rgba(255,255,255,.1)':'rgba(255,255,255,.45)';g.fillText(txt,cx-.7*q,y-.8*q);
+    const tg=g.createLinearGradient(0,y-ns/2,0,y+ns/2);tg.addColorStop(0,lk?m[1]:m[0]);tg.addColorStop(1,m[1]);g.fillStyle=tg;g.fillText(txt,cx,y);};
+  stamp(co.num,`800 ${ns}px "Rubik","Arial Black",sans-serif`,cy-ns*.12);
+  const us=Math.max(5,Math.min(8.5*q,br*1.6/Math.max(4,co.unit.length*.62)));stamp(co.unit,`800 ${us}px "Rubik","Arial Black",sans-serif`,cy+ns*.5);
+  g.save();g.beginPath();g.arc(cx,cy,R-rw,0,7);g.clip();
+  g.lineWidth=.5;for(let i=0;i<12;i++){const x=cx+(R0()-.5)*R*1.6,y=cy+(R0()-.5)*R*1.6,l=(4+R0()*14)*q,a=R0()*Math.PI;g.strokeStyle=R0()<.6?'rgba(255,255,255,.16)':'rgba(0,0,0,.25)';g.beginPath();g.moveTo(x,y);g.lineTo(x+Math.cos(a)*l,y+Math.sin(a)*l);g.stroke();}
+  for(let i=0;i<500*q*q;i++){g.fillStyle=R0()<.5?'rgba(255,255,255,.07)':'rgba(0,0,0,.12)';g.fillRect(cx+(R0()-.5)*2*R,cy+(R0()-.5)*2*R,.8,.8);}
+  if(lk){g.fillStyle='rgba(8,10,6,.3)';g.fillRect(0,0,S,S);}
+  else{const gl=g.createLinearGradient(cx-R,cy-R,cx+R,cy+R);gl.addColorStop(.32,'rgba(255,255,255,0)');gl.addColorStop(.42,'rgba(255,255,255,.2)');gl.addColorStop(.47,'rgba(255,255,255,.04)');gl.addColorStop(.56,'rgba(255,255,255,0)');g.fillStyle=gl;g.fillRect(0,0,S,S);}
   g.restore();
 }
-const coinHTML=(t,st,label)=>`<div class="lmwrap"><canvas class="coin" data-coin="${t.id}" data-st="${st}" role="img" aria-label="${esc(label)}"></canvas></div>`;
-function paintCoins(root){if(!root)return;root.querySelectorAll('canvas.coin').forEach(cv=>{const t=TAGS.find(x=>x.id===cv.dataset.coin);if(t)drawCoin(cv,t,cv.dataset.st);});}
+const coinCv=(co,st,size,label)=>`<canvas class="coin" style="width:${size}px;height:${size}px" data-coin="${co.id}" data-st="${st}" data-sz="${size}" role="img" aria-label="${esc(label||`${co.top} ${co.num} ${co.unit} coin${st==='locked'?', not earned yet':''}`)}"></canvas>`;
+function paintCoins(root){if(!root)return;const all=ALLCOINS();root.querySelectorAll('canvas.coin').forEach(cv=>{const co=all.find(x=>x.id===cv.dataset.coin);if(co)drawCoin(cv,co,cv.dataset.st,+cv.dataset.sz);});}
+// mid-workout: a plate milestone lands the moment you check off the set
+const liveCoinQ=[];
+function liveCoins(ex,s){if(!(s.w>0))return;const tr=TRACKS.find(t=>t.kind==='lift'&&t.lift===ex.n);if(!tr)return;S.coins=S.coins||{};
+  tiers(tr).forEach((T,i)=>{const id=`${tr.id}-${i}`;if(!S.coins[id]&&s.w>=T.lb-0.01){S.coins[id]={d:new Date().toISOString(),v:0};(S.active.coins=S.active.coins||[]).push(id);liveCoinQ.push(coinOf(tr,i));}});
+  if(liveCoinQ.length){save();setTimeout(showCoinQ,$('#prflash').hidden?250:2900);}}
+function showCoinQ(){const co=liveCoinQ.shift();if(!co)return;const ov=$('#coinflash');
+  $('#cfBody').innerHTML=`<p class="cfkick">COIN EARNED</p>${coinCv(co,'done',180)}<b class="cfname">${esc(co.top)} · ${co.num} ${esc(co.unit)}</b><span class="cfsub">${TIER_NAME[co.i]} · +${TIER_XP[co.i]} XP</span>`;
+  ov.hidden=false;paintCoins(ov);shake();setTimeout(()=>{ov.hidden=true;if(liveCoinQ.length)setTimeout(showCoinQ,300);},2400);}
+// hint on the exercise card when a plate coin is close
+function coinHint(n,c){const tr=TRACKS.find(t=>t.kind==='lift'&&t.lift===n);if(!tr)return '';const T=tiers(tr),i=T.findIndex((_,k)=>!(S.coins||{})[`${tr.id}-${k}`]);if(i<0)return '';
+  const b=c.best[n];if(!b)return '';const goal=T[i].lb,mx=b.v;if(mx<goal*.9)return '';
+  return `<p class="exinfo"><b>Next coin</b> ${fmtW(goal)} ${UL().toLowerCase()} ${tr.name.toLowerCase()}. Your max ≈ ${fmtW(mx)}. ${mx>=goal?'You’re strong enough. One heavy single gets it.':'Close. Keep stacking.'}</p>`;}
 
 /* ---------------- background ---------------- */
 function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
@@ -986,7 +1007,7 @@ $('#logo').addEventListener('click',e=>{e.preventDefault();go('den');});
 $('#rankchip').addEventListener('click',()=>openLadder());
 function chrome(c){const rk=rankOf(c.xp),key=rk.i+'-'+rk.div,chip=$('#rankchip');curRank=rk.i;
   if(chip.dataset.k!==key){chip.dataset.k=key;chip.innerHTML=`${rankBadge(rk.i,{mini:true})}<span class="rcn">${rk.name}</span>${rk.next?`<span class="rcd">${ROMAN[rk.div]}</span>`:''}`;chip.setAttribute('aria-label',`Your rank: ${rk.full}. See all ranks`);}
-  $('#liveDot').hidden=!S.active;$('#wallDot').hidden=!unlocked(c).some(id=>!(S.seen||[]).includes(id));}
+  $('#liveDot').hidden=!S.active;$('#wallDot').hidden=!Object.values(S.coins||{}).some(x=>!x.v);}
 
 /* ---- DEN ---- */
 let editingName=false,wipeArmed=false,qi=Math.floor(Math.random()*QUOTES.length);
@@ -1053,6 +1074,9 @@ function renderDen(){
     </div>
   </article>
 
+  ${(()=>{const nc=nextCoins(c,2);return nc.length?`<article class="poster" style="--i:3"><span class="tape r"></span><p class="eyebrow">Next coins \u00b7 your targets</p><h2 class="h2">Within reach</h2>
+    <div class="nextlist">${nc.map(x=>`<div class="nextc">${coinCv(x.coin,'locked',58)}<div style="min-width:0"><b>${esc(x.coin.top)} \u00b7 ${x.coin.num} ${esc(x.coin.unit)}</b><div class="cbar"><i style="width:${(x.pct*100).toFixed(1)}%"></i></div><small>${leftText(x.coin.tr,x.left)}</small></div></div>`).join('')}</div>
+    <button class="linkbtn" id="toCase">Open coin case \u203a</button></article>`:'';})()}
   <div class="band" style="--i:3"><q id="quote">${esc(QUOTES[qi])}</q></div>
 
   <article class="poster chalk" style="--i:4"><span class="tape"></span>
@@ -1067,14 +1091,16 @@ function renderDen(){
     ${recent.length?`<div class="log">${recent.map(s=>{const T=TEMPLATES[s.t];return `<div class="logrow" style="--c:${T.c}"><div class="lt">${T.name.split(' ')[0]}</div><div class="ld">${shortDate(s.date)} · ${setsOf(s)} sets</div><div class="lvv num">${T.rec?'RECOVERY':fmt(toU(volOf(s)))+' '+UL()}</div></div>`;}).join('')}</div>`
     :`<p class="empty">Nothing logged yet. Start a session and the first entry lands here.</p>`}
   </article></div>`;
+  paintCoins($('#view-den'));
   if(editingName){const i=$('#namein');i.focus();i.select();}
 }
 $('#view-den').addEventListener('click',e=>{
   const t=e.target.closest('button');if(!t)return;
   if(t.id==='namebtn'){editingName=true;renderDen();return;}
   if(t.id==='ladBtn'||t.id==='ladBtn2'){openLadder();return;}
+  if(t.id==='toCase'){go('wall');return;}
   if(t.id==='wipe'){if(!wipeArmed){wipeArmed=true;renderDen();setTimeout(()=>{if(wipeArmed){wipeArmed=false;if(view==='den')renderDen();}},3500);return;}
-    wipeArmed=false;S.sessions=S.sessions.filter(s=>!s.x);S.seen=[];S.active=null;save();renderDen();toast('CLEAN SLATE. LET’S BUILD.');return;}
+    wipeArmed=false;S.sessions=S.sessions.filter(s=>!s.x);S.active=null;resyncCoins();save();renderDen();toast('CLEAN SLATE. LET’S BUILD.');return;}
   if(t.id==='tMinus'||t.id==='tPlus'){S.target=Math.min(7,Math.max(1,S.target+(t.id==='tPlus'?1:-1)));save();renderDen();return;}
   if(t.dataset.ready){S.ready={d:dkey(new Date()),v:t.dataset.ready};save();renderDen();
     const msg={fired:'LET’S EAT.',solid:'STEADY WINS.',beat:'SMART CALL. RECOVERY COUNTS.'}[t.dataset.ready];toast(msg,t.dataset.ready==='beat'?'cold':'');
@@ -1266,7 +1292,7 @@ function planEx(n,count,rec,c){
   return out;
 }
 const WHY={strength:'Your goal is getting stronger, and heavy practice on your main lift is what builds strength.',vet:'You\u2019re seasoned, so your main lift needs a little more work to keep moving up.'};
-function exInfo(e,rec){return exInfoBase(e,rec)+(e.why&&!rec&&WHY[e.why]?`<p class="exinfo"><b>Why ${e.s.length} sets</b> ${WHY[e.why]}</p>`:'');}
+function exInfo(e,rec){return exInfoBase(e,rec)+(rec?'':coinHint(e.n,C()))+(e.why&&!rec&&WHY[e.why]?`<p class="exinfo"><b>Why ${e.s.length} sets</b> ${WHY[e.why]}</p>`:'');}
 function exInfoBase(e,rec){
   if(rec)return '';const u=UL().toLowerCase(),[lo,hi]=repRange(e.n,e.bw);
   if(e.first){const p=S.prs[e.n];return `<p class="exinfo"><b>First time logging this.</b> Enter the weight and reps you actually do.${isTimed(e.n)?'':` Aim for ${e.s.length} sets of ${lo}\u2013${hi} reps${e.bw?'':` (goal: ${GOALS[S.profile.goal].n.toLowerCase()})`}.`}${p?` Your PR is ${fmtW(p.w)} ${u} \u00d7 ${p.r}.`:''}</p>`;}
@@ -1406,6 +1432,7 @@ function toggleSet(btn){
   else if(done===Math.ceil(tot/2))hype('HALFWAY. THE HARD PART’S BEHIND YOU.','big');
   else if(exDone)hype(pick(HYPE_EX),'loud');
   else if(Math.random()<.35)hype(pick(HYPE_SET),'loud');
+  liveCoins(ex,s);
   updateHead();
   if(!rec&&!doneAll&&S.set.autoRest)tmStart(S.set.rest);
   if(doneAll){const f=$('#finishBtn');if(f){f.classList.add('cta-pulse');setTimeout(()=>f.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'}),600);}}
@@ -1423,13 +1450,13 @@ function finishHunt(){
   const A=S.active;if(!A)return;
   const ex=A.ex.map(e=>({n:e.n,s:e.s.filter(s=>s.d).map(s=>({w:s.w,r:s.r}))})).filter(e=>e.s.length);
   if(!ex.length){toast('LOG AT LEAST ONE SET. EVEN ONE COUNTS.','red');return;}
-  const before=C(),rb=rankOf(before.xp),tb=new Set(unlocked(before));
+  const liveIds=A.coins||[],before=C();before.xp-=liveIds.reduce((a,id)=>a+(TIER_XP[+id.split('-')[1]]||0),0);const rb=rankOf(before.xp);
   const sess={id:'s'+Date.now(),t:A.t,date:new Date().toISOString(),ex};
-  S.sessions.push(sess);const mins=Math.max(1,Math.round((Date.now()-A.start)/60000));S.active=null;TM.run=false;save();
-  const after=C(),ra=rankOf(after.xp),newTags=TAGS.filter(t=>t.test(after)&&!tb.has(t.id));
+  S.sessions.push(sess);const earned=[...ALLCOINS().filter(co=>liveIds.includes(co.id)),...awardCoins(C())];const mins=Math.max(1,Math.round((Date.now()-A.start)/60000));S.active=null;TM.run=false;save();
+  const after=C(),ra=rankOf(after.xp);
   const prs=after.prEvents.filter(p=>p.sid===sess.id),gain=after.xp-before.xp,setsN=setsOf(sess),vol=volOf(sess),T=TEMPLATES[A.t];
   const weekBonus=after.weeksHit>before.weeksHit,emberNew=after.embersEarned>before.embersEarned;
-  const parts=[`+50 for finishing`,`+${setsN*10} for ${setsN} sets`];if(prs.length)parts.push(`+${prs.length*100} for ${prs.length} PR${prs.length>1?'s':''}`);if(weekBonus)parts.push('+75 for locking in the week');
+  const parts=[`+50 for finishing`,`+${setsN*10} for ${setsN} set${setsN===1?'':'s'}`];if(prs.length)parts.push(`+${prs.length*100} for ${prs.length} PR${prs.length>1?'s':''}`);if(weekBonus)parts.push('+75 for locking in the week');if(earned.length)parts.push(`+${earned.reduce((a,co)=>a+TIER_XP[co.i],0)} for ${earned.length} coin${earned.length>1?'s':''}`);
   const wk=after.cur>=S.target?`Week locked in. Streak: <strong>${after.live}</strong> week${after.live===1?'':'s'}.${emberNew?' You also earned an ember.':''}`:`${after.cur} / ${S.target} sessions this week. <strong>${S.target-after.cur} more</strong> keeps the fire lit.`;
   const fromP=ra.i===rb.i?rb.pct:0;
   $('#finBody').innerHTML=`<span class="tape"></span>
@@ -1442,88 +1469,39 @@ function finishHunt(){
       <ul class="xpparts" style="margin-top:10px">${parts.map(p=>`<li>${p}</li>`).join('')}</ul></div>
     ${ra.i>rb.i?`<div class="rankup">RANK UP · ${ra.full}</div>`:ra.div>rb.div?`<div class="rankup">DIVISION UP · ${ra.full}</div>`:''}
     <p class="status" style="margin:0">${wk}</p>
-    ${newTags.length?`<div><p class="eyebrow" style="margin-bottom:8px">New coin${newTags.length>1?'s':''} unlocked \u00b7 claim ${newTags.length>1?'them':'it'} on the map</p><div class="newlm">${newTags.map(t=>`<div class="lm lm-fresh">${coinHTML(t,'fresh',t.name+' coin')}<b class="lmname">${esc(t.name)}</b></div>`).join('')}</div></div>`:''}
-    <div class="finbtns">${newTags.length?'<button class="btn" id="toWall">'+(newTags.length>1?'CLAIM YOUR COINS':'CLAIM YOUR COIN')+' <span class="arrow">→</span></button>':''}<button class="btn ${newTags.length?'bone':''}" id="toDen">BACK TO CAMP</button></div>`;
+    ${earned.length?`<div><p class="eyebrow" style="margin-bottom:8px">Coin${earned.length>1?'s':''} earned</p><div class="newlm">${earned.map(co=>`<div class="cwon">${coinCv(co,'done',92)}<b>${esc(co.top)}</b><small>${co.num} ${esc(co.unit)} \u00b7 ${TIER_NAME[co.i]}</small></div>`).join('')}</div></div>`:''}
+    <div class="finbtns"><button class="btn" id="toDen">BACK TO CAMP</button>${earned.length?'<button class="btn bone" id="toWall">SEE COIN CASE</button>':''}</div>`;
   const ov=$('#finish');ov.hidden=false;ov.scrollTop=0;paintCoins($('#finBody'));
   splatter();if(prs.length||ra.i>rb.i)setTimeout(shake,300);
   const ff=$('#finFill');ff.style.animation='none';requestAnimationFrame(()=>{ff.style.transition='width 1.2s cubic-bezier(.2,.9,.3,1)';setTimeout(()=>{ff.style.animation='march 1.2s linear infinite';ff.style.setProperty('--p',ra.pct.toFixed(3));},500);});
   countUp($('#xpCount'),gain,1100);
   if(ra.i>rb.i)setTimeout(()=>showRankUp(rb.i,ra.i),1000);
   $('#toDen').onclick=()=>{ov.hidden=true;go('den');};
-  if(newTags.length)$('#toWall').onclick=()=>{ov.hidden=true;go('wall');};
+  if(earned.length)$('#toWall').onclick=()=>{ov.hidden=true;go('wall');};
   $('#toDen').focus({preventScroll:true});
 }
 function countUp(el,to,ms){if(RM){el.textContent=fmt(to);return;}const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/ms);el.textContent=fmt(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);};requestAnimationFrame(f);}
 document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(!$('#rankov').hidden){$('#rankov').hidden=true;return;}if(!$('#ladder').hidden){$('#ladder').hidden=true;return;}if(!$('#finish').hidden){$('#finish').hidden=true;go('den');}});
 
 /* ---- WALL ---- */
-let MAPPOS=[];
-const MAPGAP=134;
 function renderWall(){
-  const c=C();chrome(c);const un=new Set(unlocked(c)),cl=new Set(S.seen||[]);
-  const st=t=>un.has(t.id)?(cl.has(t.id)?'done':'fresh'):'locked',nDone=TAGS.filter(t=>st(t)==='done').length,nFresh=TAGS.filter(t=>st(t)==='fresh').length;
-  MAPPOS=TAGS.map((t,i)=>{const R=rng(31+i);return [i%2?69+(R()-.5)*8:31+(R()-.5)*8,60+i*MAPGAP];});
-  const H=60+(TAGS.length-1)*MAPGAP+200;
-  $('#view-wall').innerHTML=`<article class="poster" style="--i:0"><span class="tape"></span>
-    <p class="eyebrow">Achievements · field map</p>
-    <div class="mapcount"><h2 class="h2">The map</h2><b class="num" id="mapN">${nDone} / ${TAGS.length}</b><span class="muted">coins earned</span></div>
-    <p class="fine" style="margin:6px 0 0">Every achievement is an objective on the map. Take it and you’re awarded its challenge coin. Classified coins are objectives you haven’t reached yet; the line under each one tells you how.</p>
-    ${nFresh?`<p class="mapready" id="mapReady">${nFresh} ready to claim</p>`:''}
-    <div class="map" style="height:${H}px"><canvas id="mapbg" aria-hidden="true"></canvas>
-    ${TAGS.map((t,i)=>{const s=st(t),[x,y]=MAPPOS[i];
-      return `<div class="lm lm-${s}" style="left:${x}%;top:${y}px" data-tag="${t.id}">${coinHTML(t,s,s==='locked'?'Classified coin':t.name+' coin')}
-        <b class="lmname"><small>OBJ</small>${s==='locked'?'UNKNOWN':esc(t.name)}</b>
-        ${s==='fresh'?`<button class="claimbtn" data-claim="${t.id}">CLAIM COIN</button>`:`<span class="lmhint">${s==='done'?'✓ ':''}${esc(t.hint)}</span>`}</div>`;}).join('')}
-    </div></article>`;
-  drawMap();paintCoins($('#view-wall'));
-}
-function claim(id,el){
-  const t=TAGS.find(x=>x.id===id);if(!t||!el)return;
-  S.seen=[...new Set([...(S.seen||[]),id])];save();
-  el.classList.remove('lm-fresh');el.classList.add('lm-done','lm-claimed');
-  const cv=el.querySelector('canvas.coin');setTimeout(()=>{cv.dataset.st='done';drawCoin(cv,t,'done');},RM?0:420);
-  const b=el.querySelector('.claimbtn');if(b)b.outerHTML=`<span class="lmhint">✓ ${esc(t.hint)}</span>`;
-  setTimeout(()=>{const [x,y]=center(el.querySelector('.lmwrap'));burst(x,y,{n:28,sp:6,cols:['#f4d896','#ece2cf','#b58b40']});shake();toast(pick(['COIN AWARDED.','OBJECTIVE TAKEN.','EARNED, NOT GIVEN.']));},900);
-  const c=C(),un=unlocked(c),n=TAGS.filter(q=>un.includes(q.id)&&S.seen.includes(q.id)).length,left=un.filter(x=>!S.seen.includes(x)).length;
-  $('#mapN').textContent=`${n} / ${TAGS.length}`;const r=$('#mapReady');if(r){if(left)r.textContent=`${left} ready to claim`;else r.remove();}
-  chrome(c);
-}
-$('#view-wall').addEventListener('click',e=>{const b=e.target.closest('[data-claim]');if(b)claim(b.dataset.claim,b.closest('.lm'));});
-// survey-style field map: dense contours with elevations, forest stipple, river, grid, fold creases, track
-function drawMap(){const cv=$('#mapbg');if(!cv)return;const box=cv.parentElement,w=box.clientWidth,h=box.clientHeight,dpr=Math.min(3,devicePixelRatio||1);
-  cv.width=w*dpr;cv.height=h*dpr;const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);const R=rng(21);
-  g.fillStyle='#1b1e16';g.fillRect(0,0,w,h);
-  for(let i=0;i<w*h/35;i++){g.fillStyle=R()<.5?'rgba(255,245,210,.025)':'rgba(0,0,0,.18)';g.fillRect(R()*w,R()*h,1,1);}
-  // forest stipple
-  for(let n=0;n<w*h/7000;n++){const cx=R()*w,cy=R()*h,r=26+R()*60;for(let k=0;k<r*1.6;k++){const a=R()*6.283,d=Math.sqrt(R())*r;g.fillStyle='rgba(78,104,60,.32)';g.beginPath();g.arc(cx+Math.cos(a)*d,cy+Math.sin(a)*d*.8,.8+R()*.8,0,7);g.fill();}}
-  // contours with elevation labels
-  g.font='8px "Special Elite", monospace';g.textAlign='center';g.textBaseline='middle';
-  const hills=Math.max(4,Math.round(h/300));
-  for(let k=0;k<hills;k++){const cx=R()*w,cy=(k+.5)*h/hills,ph=R()*6,levels=11+Math.floor(R()*5),base=180+Math.floor(R()*6)*20;
-    for(let l=1;l<=levels;l++){const rad=l*9,idx=l%5===0;g.strokeStyle=idx?'rgba(185,150,100,.42)':'rgba(165,135,90,.2)';g.lineWidth=idx?1.3:.8;g.beginPath();
-      for(let s=0;s<=64;s++){const a=s/64*6.283,rr=rad*(1+.2*Math.sin(a*3+ph+l*.25)+.1*Math.sin(a*5+ph*2));const px=cx+Math.cos(a)*rr*1.35,py=cy+Math.sin(a)*rr;s?g.lineTo(px,py):g.moveTo(px,py);}
-      g.closePath();g.stroke();
-      if(idx){const a=.3,rr=rad*(1+.2*Math.sin(a*3+ph+l*.25)+.1*Math.sin(a*5+ph*2)),px=cx+Math.cos(a)*rr*1.35,py=cy+Math.sin(a)*rr;g.fillStyle='#1b1e16';g.fillRect(px-9,py-5,18,10);g.fillStyle='rgba(200,170,115,.7)';g.fillText(String(base+(levels-l)*20),px,py);}}}
-  // river: thin double-edged line
-  const pts=[];for(let y=-20;y<=h+40;y+=60)pts.push([w*(.5+Math.sin(y/180+1)*.4)+(R()-.5)*18,y]);
-  const riv=(lw,col)=>{g.strokeStyle=col;g.lineWidth=lw;g.lineJoin='round';g.lineCap='round';g.beginPath();g.moveTo(pts[0][0],pts[0][1]);for(let k=1;k<pts.length-1;k++)g.quadraticCurveTo(pts[k][0],pts[k][1],(pts[k][0]+pts[k+1][0])/2,(pts[k][1]+pts[k+1][1])/2);g.stroke();};
-  riv(9,'rgba(120,150,150,.5)');riv(6.5,'#1c2a2b');
-  // grid with coordinates
-  const cell=Math.max(64,w/5);g.strokeStyle='rgba(200,185,140,.12)';g.lineWidth=1;g.font='9px "Special Elite", monospace';g.fillStyle='rgba(205,190,145,.5)';g.textAlign='left';g.textBaseline='alphabetic';
-  for(let x=cell,i=0;x<w;x+=cell,i++){g.beginPath();g.moveTo(x,0);g.lineTo(x,h);g.stroke();g.fillText(String(46+i),x+3,11);}
-  for(let y=cell,i=0;y<h;y+=cell,i++){g.beginPath();g.moveTo(0,y);g.lineTo(w,y);g.stroke();g.fillText(String(12+i),3,y-3);}
-  // objective plots under each coin
-  const P=MAPPOS.map(([px,py])=>[px/100*w,py+52]);
-  g.strokeStyle='rgba(215,200,150,.35)';g.lineWidth=1;for(const [x,y] of P){g.beginPath();g.arc(x,y,62,0,7);g.stroke();for(const a of [0,Math.PI/2,Math.PI,Math.PI*1.5]){g.beginPath();g.moveTo(x+Math.cos(a)*56,y+Math.sin(a)*56);g.lineTo(x+Math.cos(a)*70,y+Math.sin(a)*70);g.stroke();}}
-  // track between objectives
-  const route=(lw,col,dash)=>{g.setLineDash(dash);g.strokeStyle=col;g.lineWidth=lw;g.beginPath();g.moveTo(P[0][0],P[0][1]);for(let k=1;k<P.length;k++){const [x0,y0]=P[k-1],[x1,y1]=P[k];g.bezierCurveTo(x0,y0+70,x1,y1-70,x1,y1);}g.stroke();g.setLineDash([]);};
-  route(4,'rgba(215,200,150,.18)',[]);route(2,'#0a0b08',[11,5]);
-  // fold creases
-  for(let y=Math.round(h/4);y<h;y+=Math.round(h/4)){g.fillStyle='rgba(0,0,0,.4)';g.fillRect(0,y,w,1.5);g.fillStyle='rgba(255,240,200,.06)';g.fillRect(0,y+1.5,w,1);}
-  g.fillStyle='rgba(0,0,0,.4)';g.fillRect(w/2,0,1.5,h);g.fillStyle='rgba(255,240,200,.06)';g.fillRect(w/2+1.5,0,1,h);
-  // sheet margin text
-  g.font='9px "Special Elite", monospace';g.fillStyle='rgba(205,190,145,.55)';g.fillText('SILVERBACK OPS · JUNGLE SECTOR · SHEET 07',6,h-20);g.fillText('SCALE 1:25 000 · CONTOUR INTERVAL 20 M',6,h-8);
-  const v=g.createLinearGradient(0,0,w,0);v.addColorStop(0,'rgba(0,0,0,.35)');v.addColorStop(.1,'rgba(0,0,0,0)');v.addColorStop(.9,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(0,0,0,.35)');g.fillStyle=v;g.fillRect(0,0,w,h);
+  const c=C();chrome(c);const all=ALLCOINS(),got=S.coins||{},n=all.filter(co=>got[co.id]).length;
+  const nx=nextCoins(c,1)[0];
+  $('#view-wall').innerHTML=`<div style="display:grid;gap:22px"><article class="poster" style="--i:0"><span class="tape"></span>
+    <p class="eyebrow">Achievements</p>
+    <div class="mapcount"><h2 class="h2">Coin case</h2><b class="num">${n} / ${all.length}</b></div>
+    <p class="fine" style="margin:6px 0 0">Coins are earned automatically the moment you hit a milestone, even mid-set. Each track goes bronze, gunmetal, silver, brass, gold, and every coin adds XP toward your rank (${TIER_XP.join(' / ')}).</p>
+    ${nx?`<div class="nextup"><span class="eyebrow">Closest coin</span><b>${esc(nx.coin.top)} · ${nx.coin.num} ${esc(nx.coin.unit)}</b><div class="cbar"><i style="width:${(nx.pct*100).toFixed(1)}%"></i></div><small>${leftText(nx.coin.tr,nx.left)}</small></div>`:''}
+  </article>
+  ${TRACKS.map((tr,ti)=>{const T=tiers(tr),v=trackValue(tr,c),i=T.findIndex((_,k)=>!got[`${tr.id}-${k}`]),prev=i>0?T[i-1].lb:0,pct=i<0?1:Math.max(0,Math.min(1,(v-prev)/(T[i].lb-prev)));
+    return `<article class="poster track" style="--i:${ti+1}">
+      <div class="trhead"><h3>${esc(tr.name)}</h3><span>${i<0?'ALL 5 EARNED':`${T.filter((_,k)=>got[`${tr.id}-${k}`]).length} / 5`}</span></div>
+      <p class="fine" style="margin:0">${tr.desc} You: <b style="color:var(--bone)">${v?valText(tr,v):'—'}</b></p>
+      <div class="corow">${T.map((_,k)=>{const co=coinOf(tr,k),e=got[co.id];return `<div class="cslot${e&&!e.v?' isnew':''}">${coinCv(co,e?'done':'locked',58)}<small>${co.num}</small></div>`;}).join('')}</div>
+      ${i<0?'':`<div class="cbar"><i style="width:${(pct*100).toFixed(1)}%"></i></div><small class="cleft">${tr.kind==='lift'&&!v?'Log this lift to start the track.':`Next: ${coinOf(tr,i).num} ${coinOf(tr,i).unit} · ${leftText(tr,T[i].lb-v)}`}</small>`}
+    </article>`;}).join('')}</div>`;
+  paintCoins($('#view-wall'));
+  let changed=false;for(const k in got)if(!got[k].v){got[k].v=1;changed=true;}if(changed)save();
 }
 
 /* ---- TOOLS ---- */
@@ -1636,9 +1614,9 @@ youEl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)retu
   if(b.id==='copyData'){const txt=JSON.stringify(S),out=$('#dataOut');
     const fallback=()=>{out.hidden=false;out.value=txt;out.focus();out.select();toast('SELECT IT ALL AND COPY.');};
     try{navigator.clipboard.writeText(txt).then(()=>toast('COPIED. PASTE IT SOMEWHERE SAFE.'),fallback);}catch(err){fallback();}return;}
-  if(b.id==='rmEx'){S.sessions=S.sessions.filter(s=>!s.x);S.seen=[];save();renderYou();toast('EXAMPLES GONE. IT’S ALL YOU NOW.');return;}
+  if(b.id==='rmEx'){S.sessions=S.sessions.filter(s=>!s.x);resyncCoins();save();renderYou();toast('EXAMPLES GONE. IT’S ALL YOU NOW.');return;}
   if(b.id==='resetAll'){if(!resetArmed){resetArmed=true;renderYou();setTimeout(()=>{if(resetArmed){resetArmed=false;if(view==='you')renderYou();}},3500);return;}
-    resetArmed=false;S={v:1,name:'',target:3,sessions:[],active:null,ready:null,seen:[],prs:{},onboarded:false,set:Object.assign({},DEF_SET),profile:newProfile()};
+    resetArmed=false;S={v:1,name:'',target:3,sessions:[],active:null,ready:null,prs:{},onboarded:false,set:Object.assign({},DEF_SET),profile:newProfile()};
     save();applySettings();renderYou();openOnboard(1);return;}
   if(b.id==='editPrs'){openOnboard(2,'edit');}
 });
@@ -1699,7 +1677,7 @@ $('#obBody').addEventListener('click',e=>{const b=e.target.closest('button');if(
   if(b.id==='obSave'){const prs={},now=new Date().toISOString();let n=0;
     OB.rows.forEach(r=>{const name=(r.n||'').trim().slice(0,24);if(name&&r.w>0){prs[name]={w:r.w,r:Math.max(1,Math.round(r.r||1)),date:(S.prs[name]&&S.prs[name].w===r.w&&S.prs[name].r===r.r)?S.prs[name].date:now};n++;}});
     if(OB.mode==='first'&&!n){toast('ADD AT LEAST ONE, OR TAP SKIP.','red');return;}
-    S.prs=prs;if(OB.mode==='first'){S.sessions=S.sessions.filter(s=>!s.x);S.seen=[];}
+    S.prs=prs;if(OB.mode==='first'){S.sessions=S.sessions.filter(s=>!s.x);}resyncCoins();
     save();const [x,y]=center(b);burst(x,y,{n:30,sp:7});
     if(OB.mode==='edit'){closeOb();renderYou();toast(n?'PRS UPDATED. NOW GO BEAT THEM.':'PRS CLEARED.');return;}
     OB.step=3;OB.saved=n;renderOb();}
@@ -1717,9 +1695,9 @@ $('#obBody').addEventListener('input',e=>{const t=e.target,id=t.id;
 fx.cv=$('#fx');fx.g=fx.cv.getContext('2d');fxSize();
 $('#logoApe').innerHTML=GORILLA;
 applySettings();drawBG(true);apeLoop();
-if(!Array.isArray(S.seen)){const un=unlocked(C());S.seen=un.slice(0,Math.max(0,un.length-1));save();}
-if(document.fonts&&document.fonts.load){Promise.all([document.fonts.load('60px "Sedgwick Ave Display"'),document.fonts.load('20px "Rubik Dirt"')]).then(()=>{drawBG(true);if(view==='wall')drawMap();}).catch(()=>{});}
-let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{drawBG();fxSize();if(view==='wall')drawMap();},200);});
+delete S.seen;if(!S.coins){S.coins={};awardCoins(C(),true);}
+if(document.fonts&&document.fonts.load){Promise.all([document.fonts.load('60px "Sedgwick Ave Display"'),document.fonts.load('20px "Rubik Dirt"')]).then(()=>{drawBG(true);}).catch(()=>{});}
+let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{drawBG();fxSize();},200);});
 go(S.active?'hunt':'den',{keepScroll:true});
 if(!S.onboarded)openOnboard(1);
 if(!S.active)setTimeout(()=>{const t=$('.tape');if(t){const [x,y]=center($('.word'));burst(x,y,{n:22,sp:5,life:34,s:2.4});}},900);

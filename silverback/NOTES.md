@@ -1,13 +1,19 @@
 # Silverback notes (app was first called IronPack)
 
 ## In progress
-- Published v23 (index.html). Waiting for feedback.
+- Published v24 (index.html). Waiting for feedback.
 
 ## Next
 - Ideas to add: progress photos, friends ("troop") to fist-bump, custom workouts, kg everywhere, sounds.
 - Turning it into a real phone app would need a builder or app store account (ask before adding anything paid).
 
 ## Log (newest first)
+- 2026-11-09: Achievements rebuilt as tiered challenge coins (COINS tab replaces the map). 10 tracks x 5 tiers
+  (bronze, gunmetal, silver, brass, gold; +50/100/150/250/400 XP): plate clubs for bench/squat/deadlift/OHP
+  (heaviest weight lifted; lb 135/225/315..., kg 60/100/140...), sessions, week streak, PRs, ghost wins, recovery
+  days, total lifted. Auto-awarded (no claiming), never taken away (S.coins). Plate coins pop mid-workout.
+  Camp shows the 2 closest coins with progress; exercise cards show "Next coin" when within 10%.
+  Coin face shows engraved number + unit. Quote banner jungle lines replaced.
 - 2026-11-08: Header slogan replaced: "NOBODY'S COMING." (rough stencil) / "GET TO WORK." (solid yellow block,
   no graffiti or drips) / "Show up. Do the work. Leave stronger." Old "Life's my jungle" line removed.
 - 2026-11-08: Background is now an underground city gym: board-formed concrete, water stains, cracks, faded

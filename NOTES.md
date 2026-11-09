@@ -12,6 +12,7 @@ Saved in the GitHub project Alexadb99/notes.
   (deep-research + dataviz). Waiting on the user.
 
 ## Log (newest first)
+- 2026-11-09: Silverback: achievements rebuilt as tiered challenge coins (see silverback/NOTES.md).
 - 2026-11-09: Added CLAUDE.md with GitHub rules every session must follow (one account,
   no bulk automation, no secrets, only original or licensed content, small files).
   Checked repo: no secrets or personal info; fonts are free Google Fonts.
